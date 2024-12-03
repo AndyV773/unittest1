@@ -11,7 +11,11 @@ class Student:
         self._last_name = last_name
         self._start_date = date.today() # Will create time the instance was created
         self.end_date = date.today() + timedelta(days=365) # does not allow for leap years (can be improved)
+        # Checks leap year
+        if self._start_date.day != self.end_date.day: # Compares start day end day, adds 1 day if they are not equal
+            self.end_date += timedelta(days=1)
         self.naughty_list = False
+        self.extension = False
 
 
     @property # read-only method
@@ -39,3 +43,20 @@ class Student:
             return response.text
         else:
             return "Something went wrong with the request!"
+
+
+    def show_start_date(self):
+        print(self._start_date)
+        return self._start_date
+    
+
+    def show_end_date(self):
+        print(self.end_date)
+        return self.end_date
+
+    
+    def check_days_left(self):
+        days_left = (self.end_date - self._start_date).days
+        print(days_left)
+        return days_left
+

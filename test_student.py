@@ -72,5 +72,31 @@ class TestStudent(unittest.TestCase):
             self.assertEqual(schedule, "Something went wrong with the request!")
 
 
+    def test_show_start_date(self):
+        print('test_show_start_date')
+        get_date = self.student.show_start_date
+        self.student.show_start_date()
+
+        self.assertEqual(self.student.show_start_date, get_date)
+        print(self.student._start_date.day)
+
+    
+    def test_show_end_date(self):
+        print('test_show_end_date')
+        get_date = self.student.show_end_date
+        self.student.show_end_date()
+
+        self.assertEqual(self.student.show_end_date, get_date)
+        print(self.student.end_date.day)
+
+
+    def test_check_days_left(self):
+        print('test_check_days_left')
+        
+        days_left = self.student.check_days_left()
+
+        self.assertEqual(days_left, 365)
+        
+
 if __name__ == '__main__':
     unittest.main()
